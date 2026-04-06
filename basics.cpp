@@ -43,7 +43,7 @@
 using namespace std;
 int main(){
      int num1;
-     cout<<"enter num1";
+     cout<<"enter num1"<<endl;
      cin>>num1;
      bool flag=true;
      for(int i=2;i<num1;i++){
