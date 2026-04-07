@@ -83,20 +83,57 @@
 //subarray-contnous part of array
 
 //printing all subarrays
+// #include <iostream>
+// using namespace std;
+// int main(){
+//       int n=5;
+//       int arr[5]={1,2,3,4,5};
+//       int start,end,i;
+//       for(start=0;start<n;start++){
+//         for(end=start;end<n;end++){
+//             for(i=start;i<=end;i++){
+//                 cout<<arr[i];
+//             }
+//             cout<<" ";
+//         }
+//         cout<<endl;
+//       }
+//       return 0;
+// }
+
+//brute force approach
 #include <iostream>
+#include <climits>
 using namespace std;
 int main(){
-      int n=5;
-      int arr[5]={1,2,3,4,5};
-      int start,end,i;
-      for(start=0;start<n;start++){
-        for(end=start;end<n;end++){
-            for(i=start;i<=end;i++){
-                cout<<arr[i];
-            }
-            cout<<" ";
+    int n=5;
+    int arr[5]={-1,4,3,-5,8};
+    int maxs=INT_MIN;
+    for(int start=0;start<n;start++){
+        int sum=0;
+        for(int end=start;end<n;end++){
+            sum+=arr[end];
+            maxs=max(sum,maxs);
         }
-        cout<<endl;
-      }
-      return 0;
+    }
+    cout<<"max subarray sum"<<maxs;
 }
+
+//kadane's algo
+// #include <iostream>
+// #include <climits>
+// using namespace std;
+// int main(){
+//     int n=5,sum=0,maxs=INT_MIN;
+//     int arr[5]={-1,4,3,-5,8};
+//     for (int i = 0; i < n; i++)
+//     {
+//         sum+=arr[i];
+//         maxs=max(maxs,sum);
+//         if(sum<0){
+//             sum=0;
+//         }
+//     }
+//     cout<<maxs;
+    
+// }
