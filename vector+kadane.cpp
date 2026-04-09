@@ -102,22 +102,22 @@
 // }
 
 //brute force approach
-#include <iostream>
-#include <climits>
-using namespace std;
-int main(){
-    int n=5;
-    int arr[5]={-1,4,3,-5,8};
-    int maxs=INT_MIN;
-    for(int start=0;start<n;start++){
-        int sum=0;
-        for(int end=start;end<n;end++){
-            sum+=arr[end];
-            maxs=max(sum,maxs);
-        }
-    }
-    cout<<"max subarray sum"<<maxs;
-}
+// #include <iostream>
+// #include <climits>
+// using namespace std;
+// int main(){
+//     int n=5;
+//     int arr[5]={-1,4,3,-5,8};
+//     int maxs=INT_MIN;
+//     for(int start=0;start<n;start++){
+//         int sum=0;
+//         for(int end=start;end<n;end++){
+//             sum+=arr[end];
+//             maxs=max(sum,maxs);
+//         }
+//     }
+//     cout<<"max subarray sum"<<maxs;
+// }
 
 //kadane's algo
 // #include <iostream>
@@ -137,3 +137,64 @@ int main(){
 //     cout<<maxs;
     
 // }
+
+//pair sum
+//given sorted array and target sum
+//brute force approach
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+// vector <int> pairsum(vector <int>vec,int target){
+//            vector <int> ans;
+//            int n=vec.size();
+//            for(int i=0;i<n;i++){
+//             for(int j=i+1;j<n;j++){
+//                 if(vec[i]+vec[j]==target){
+//                     ans.push_back(i);
+//                     ans.push_back(j);
+//                     return ans;
+//                 }
+//             }
+                
+
+//            }
+// }
+// int main(){
+//     vector <int> vec={2,7,11,13};
+//     int target=13;
+//     vector<int> ans=pairsum(vec,target);
+//     cout<<ans[0]<<","<<ans[1];
+
+// }
+
+//sorted array -reduce time complexity
+//3 cases > ,< ,= ,two-pointer approach
+#include <iostream>
+#include <vector>
+using namespace std;
+vector<int> pairsum(vector<int> key ,int target){
+    int n=key.size();
+     int i=0,j=n-1;
+     vector<int>ans;
+     while(i<j){
+        int sum=key[i]+key[j];
+        if(sum>target){
+            j--;
+        }
+        else if(sum<target){
+            i++;
+        }
+        else{
+            ans.push_back(i);
+            ans.push_back(j);
+            return ans;
+        }
+     }
+    }
+int main(){
+    vector <int> key={2,7,11,13};
+    int target=24;
+   vector <int>final=pairsum(key,target);
+   cout<<final[0]<<" "<<final[1];
+   return 0;
+}
